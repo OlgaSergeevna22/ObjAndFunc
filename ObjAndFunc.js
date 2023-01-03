@@ -109,3 +109,50 @@ function unluckyDays(year) {
 
 unluckyDays(2015) // 3
 unluckyDays(1986) // 1
+
+
+// 3. Учитывая a Date(в JS и Ruby) или hoursи minutes(в C и Python), верните угол между двумя стрелками 12-часовых аналоговых часов в радианах.
+
+// Примечания:
+// Минутная стрелка всегда указывает точную минуту (секундной стрелки нет).
+// Часовая стрелка не "привязывается" к отметкам: например, под 6:30углом нет0, потому что часовая стрелка уже находится на полпути между 6и 7.
+// Возвращает меньший из углов ( <= π ).
+// Вернитесьπ, если стрелки противоположны.
+// Примеры
+// в полдень угол равен: 0
+// под 3:00углом: π/2(90 градусов)
+// под 6:00углом: π(180 градусов)
+// под 9:00углом: π/2(90 градусов)
+
+function handAngle(date) {
+
+
+
+    // работает с ...date
+    // let hour = +date[0];
+    // console.log(hour);
+    // let minute = +date[1];
+    // console.log(minute);
+    // let speedHourHand = 360 / (12 * 60);
+    // let speedMinHand = 360 / 60;
+    // let moveHour = (hour * 60 + minute) * speedHourHand;
+    // let moveMinute = minute * speedMinHand;
+    // let angle = Math.abs(moveHour - moveMinute);
+    // if (angle > 180) { angle = 360 - angle; }
+    // console.log(angle * Math.PI / 180);
+
+    let hour = date.getUTCHours() % 12;
+    let mimute = date.getUTCMinutes();
+    let speedHourHand = 360 / (12 * 60);
+    let speedMinuteHand = 360 / 60;
+    let moveHour = (hour * 60 + mimute) * speedHourHand;
+    let moveMinute = mimute * speedMinuteHand;
+    let angle = Math.abs(moveHour - moveMinute);
+    if (angle > 180) { angle = 360 - angle; }
+    console.log(angle * Math.PI / 180);
+}
+
+
+handAngle(10, 0) // 1.0471975511965976);
+handAngle(0, 15) //, 1.4398966328953218);
+handAngle(0, 45) //, 1.9634954084936207);
