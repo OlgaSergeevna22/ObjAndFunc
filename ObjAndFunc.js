@@ -15,32 +15,63 @@
 // myLanguages({ "C++": 50, "ASM": 10, "Haskell": 20 })
 
 
-// Tasks Functions
+// // Tasks Functions
 
-// 1. Вы пишете функцию, которая принимает два набора аргументов произвольной длины. Возвращаемое значение будет суммой значений всех аргументов.
-
-
-function calculate(a, b) {
-    // return a + b
-    console.log(a + b);
-}
+// // 1. Вы пишете функцию, которая принимает два набора аргументов произвольной длины. Возвращаемое значение будет суммой значений всех аргументов.
 
 
+// function calculate(a, b) {
+//     let sum = 0;
+//     for (let i = 0; i < arguments.length; i++) {
+//         sum += arguments[i]
+//     }
+//     return function() {
+//         for (let j = 0; j < arguments.length; j++) {
+//             sum += arguments[j];
+//         }
+//         console.log(sum);
+//     }
+// }
+// // function calculate(...a) {
+// //     return function (...b) {
+// //       return [...a, ...b].reduce((sum, n) => sum + n)
+// //     };
+// //   }
 
-//     // let sum = 0;
-//     // for (let i = 0; i < arguments.length; i++) {
-//     //     sum += arguments[i]
-//     // }
-//     // return function() {
-//     //     for (let j = 0; j < arguments.length; j++) {
-//     //         sum += arguments[j];
-//     //     }
-//     //     console.log(sum);
-//     // }
+
+// calculate(1)(1) // should return 2
+// calculate(1, 1)(1) // should return 3
+// calculate(1, 1)(1, -1) // should return 2
+// calculate(2, 4)(3, 7, 1) // should return 17  
 
 
 
-calculate(1)(1) // should return 2
-calculate(1, 1)(1) // should return 3
-    // calculate(1, 1)(1, -1) // should return 2
-    // calculate(2, 4)(3, 7, 1) // should return 17
+// // Tasks Date
+// //1. История
+// // Ваш интернет-магазин любит раздавать купоны для особых случаев. Некоторые клиенты пытаются обмануть систему, вводя неверные коды или используя купоны с истекшим сроком действия.
+
+// // Задача
+// // Ваша задача:
+// // написать вызываемую функциюcheckCoupon, которая проверяет, что код купона действителен и не истек.
+
+// // Купон больше не действителен на следующий день ПОСЛЕ истечения срока действия. Все даты будут передаваться в виде строк в этом формате: "MONTH DATE, YEAR".
+
+
+
+// function checkCoupon(enteredCode, correctCode, currentDate, expirationDate) {
+
+//     currentDate = new Date(currentDate);
+//     expirationDate = new Date(expirationDate);
+
+//     if (enteredCode === correctCode && currentDate <= expirationDate) {
+//         console.log(true);
+//     } else {
+//         console.log(false);
+//     }
+
+//     // return enteredCode === correctCode && Date.parse(expirationDate) >= Date.parse(currentDate)
+// }
+
+
+// checkCoupon("123", "123", "July 9, 2015", "July 9, 2015") // true
+// checkCoupon("123", "123", "July 9, 2015", "July 2, 2015") // false
