@@ -46,6 +46,25 @@ calculate(2, 4)(3, 7, 1) // should return 17
 
 
 
+// 2. #Описание Ваша задача - реализовать нашу любимую функцию Array.prototype.map с нуля, и да, она должна быть внутри прототипа массива. 
+
+Array.prototype.map = function(callback, context) {
+    const length = this.length
+    const arr = new Array(length)
+    for (let i = 0; i < length; i++) {
+        if (i in this) {
+            arr[i] = callback.call(context, this[i], i, this)
+        }
+    }
+    return arr
+}
+
+
+// Array.prototype.map = function(fn, nThis) {
+//     var newArr = this.slice();
+//     this.forEach((v, i, arr) => newArr[i] = fn.apply(nThis, [v, i, arr]));
+//     return newArr;
+//   }
 // Tasks Date
 //1. История
 // Ваш интернет-магазин любит раздавать купоны для особых случаев. Некоторые клиенты пытаются обмануть систему, вводя неверные коды или используя купоны с истекшим сроком действия.
