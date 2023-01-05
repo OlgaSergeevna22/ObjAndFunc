@@ -45,10 +45,10 @@ console.log(runLengthEncoding("hello world!"));
 //   Также этот метод должен обрабатывать недопустимые пути. Если у нас есть объект { user: { name: 'Dan' } }и путь есть'user.wallet.money', мы должны вернуться undefined. Допустимые пути являются эксклюзивными для свойств объекта, которые не наследуются, другими словами, они специфичны для этого объекта и не требуют поиска цепочки прототипов.
 
 function find(object, path) {
-    path = path.split(".");
-    for (i in path) {
-        if (object.hasOwnProperty(path[i]) === true) {
-            object = object[path[i]];
+    propertyString = path.split(".");
+    for (i in propertyString) {
+        if (object.hasOwnProperty(propertyString[i]) === true) {
+            object = object[propertyString[i]];
         } else {
             return undefined;
         }
