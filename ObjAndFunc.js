@@ -65,6 +65,31 @@ Array.prototype.map = function(callback, context) {
 //     this.forEach((v, i, arr) => newArr[i] = fn.apply(nThis, [v, i, arr]));
 //     return newArr;
 //   }
+
+
+// 3. #Ваша задача реализовать наш любимый массив prototype.filter с нуля.
+
+
+Array.prototype.filter = function(fun, that) {
+    let out = [];
+
+    if (that) {
+        fun = fun.bind(that);
+    }
+
+    let t = this;
+    let len = t.length;
+    for (let i = 0; i < len; i++) {
+        if (i in t) {
+            if (fun(t[i], i, t)) {
+                out.push(t[i]);
+            }
+        }
+    }
+    return out;
+};
+
+
 // Tasks Date
 //1. История
 // Ваш интернет-магазин любит раздавать купоны для особых случаев. Некоторые клиенты пытаются обмануть систему, вводя неверные коды или используя купоны с истекшим сроком действия.
